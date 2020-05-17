@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"(cd server && npm start)\" \"cd client && npm start\"",
     "dev": "concurrently \"(cd server && npm run dev)\" \"cd client && npm run dev\"",
-    "test": "(cd server && npm t) && (cd client && npm t)",
+    "test": "(cd server && npm run test:ci) && (cd client && npm t)",
     "test:watch": "(cd server && npm run test:watch) && (cd client && npm run test:watch)"
   },
   "repository": {
