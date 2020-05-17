@@ -1,0 +1,36 @@
+{
+  "name": "hot-spots",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "concurrently \"(cd server && npm start)\" \"cd client && npm start\"",
+    "dev": "concurrently \"(cd server && npm run dev)\" \"cd client && npm run dev\"",
+    "test": "(cd server && npm t) && (cd client && npm t)",
+    "test:watch": "(cd server && npm run test:watch) && (cd client && npm run test:watch)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synthesists/hot-spots.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/synthesists/hot-spots/issues"
+  },
+  "homepage": "https://github.com/synthesists/hot-spots#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
