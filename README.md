@@ -1,13 +1,7 @@
 <h1 align="center">Welcome to Hot Spots 👋</h1>
-<p>
-  [![CircleCI](https://circleci.com/gh/synthesists/hot-spots.svg?style=shield)](https://circleci.com/gh/synthesists/hot-spots)
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/caa153bc-8190-4607-a60f-7ab2d8d7b5ba/deploy-status)](https://app.netlify.com/sites/hot-spots/deploys)
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-</p>
 
-> description
-
-### 🏠 [Homepage](https://github.com/synthesists/hot-spots#readme)
+[![CircleCI](https://circleci.com/gh/synthesists/hot-spots.svg?style=shield)](https://circleci.com/gh/synthesists/hot-spots)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/caa153bc-8190-4607-a60f-7ab2d8d7b5ba/deploy-status)](https://app.netlify.com/sites/hot-spots/deploys)
 
 ### ✨ [Demo](https://hot-spots.craigforrest.io)
 
