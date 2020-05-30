@@ -7,7 +7,8 @@
     "dev": "concurrently \"(cd server && npm run dev)\" \"cd client && npm run dev\"",
     "test": "(cd server && npm run test:ci) && (cd client && npm t)",
     "test:watch": "(cd server && npm run test:watch) && (cd client && npm run test:watch)",
-    "postinstall": "(cd server && npm i) && (cd client && npm i)"
+    "postinstall": "(cd server && npm i) && (cd client && npm i)",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
