@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import styles from './main.layout.module.scss';
 import Light from '../../styles/themes/light.theme.module.css';
@@ -13,7 +13,7 @@ export default ({ children, title = 'This is the default title' }) => {
   const currentTheme = themes[themeIndex].theme;
 
   return (
-    <div className={[currentTheme, styles.main].join(' ')}>
+    <div className={[currentTheme, styles.Main].join(' ')}>
       <Head>
         <title>{title}</title>
       </Head>
