@@ -6,8 +6,8 @@ import Question from '../containers/Question';
 
 const getTracks = async (playlistId) => [
   '65WFgyQwNpjmGQ41MiwGtF',
-  '6SlZp9UeLRIuw92j96dcjU',
-  '6ikzdvfsPbdaGpXmeEeaK2',
+  '136iZLQdKtlyEFurf4UKf6',
+  '3UJV7BZtyVy0ZNXiPOiaKB',
 ];
 
 export default () => {
@@ -15,6 +15,7 @@ export default () => {
   const { playlistId } = router.query;
 
   const [tracks, setTracks] = useState([]);
+  const [toPlay, setToPlay] = useState(false);
 
   useEffect(() => {
     getTracks(playlistId).then((t) => setTracks(t));
@@ -27,9 +28,11 @@ export default () => {
 
   return (
     <MainLayout title="Hot Spots | Play">
-      {tracks.length > 0 ? (
+      {toPlay ? (
         <Question onClick={onClick} track={tracks[0]} />
-      ) : null}
+      ) : (
+        <button onClick={() => setToPlay(true)}>PLAY</button>
+      )}
     </MainLayout>
   );
 };

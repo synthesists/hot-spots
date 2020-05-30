@@ -2,7 +2,16 @@ import React from 'react';
 
 import styles from './Record.module.scss';
 
-export default ({ url, onMouseOver, onMouseOut, onFocus, onBlur, onClick }) => (
+export default ({
+  url,
+  onMouseOver,
+  onMouseOut,
+  onFocus,
+  onBlur,
+  onClick,
+  onTouchStart,
+  onTouchEnd,
+}) => (
   <div className={styles.Record}>
     <img
       crossOrigin="anonymous"
@@ -13,6 +22,8 @@ export default ({ url, onMouseOver, onMouseOut, onFocus, onBlur, onClick }) => (
       onFocus={onFocus}
       onBlur={onBlur}
       onClick={onClick}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     />
   </div>
 );

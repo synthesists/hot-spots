@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
+
 import Record from '../../elements/Record';
 
 import styles from './RecordPlayer.module.scss';
 
-export default ({ imageUrl, previewUrl, onClick }) => {
+export default ({ imageUrl, previewUrl }) => {
+  console.log('isMobile', isMobile);
   const [audio, setAudio] = useState(undefined);
-  const [shouldPlay, setShouldPlay] = useState(false);
-
-  if (shouldPlay) audio.play();
 
   useEffect(() => {
     const a = new Audio();
     a.src = previewUrl;
     setAudio(a);
-  }, []);
-
-  useEffect(() => {
-    if (previewUrl) {
-      if (audio) audio.pause();
-      const a = new Audio();
-      a.src = previewUrl;
-      setAudio(a);
-    }
   }, [previewUrl]);
 
-  const onMouseOver = () => audio.play();
-  const onMouseOut = () => audio.pause();
+  // useEffect(() => {
+  //   if (previewUrl) {
+  //     if (audio) audio.pause();
+  //     const a = new Audio();
+  //     a.src = previewUrl;
+  //     setAudio(a);
+  //   }
+  // }, [previewUrl]);
+  console.log(audio);
+  const onMouseOver = !isMobile ? () => audio.play() : () => {};
+  const onMouseOut = !isMobile ? () => audio.pause() : () => {};
+  const onTouchStart = isMobile ? () => audio.play() : () => {};
+  const onTouchEnd = isMobile ? () => audio.pause() : () => {};
 
   return (
     <div className={styles.Record}>
@@ -34,11 +36,9 @@ export default ({ imageUrl, previewUrl, onClick }) => {
         onFocus={onMouseOver}
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
-        onClick={() => {
-          audio.pause();
-          onClick();
-          setShouldPlay(true);
-        }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        onClick={() => {}}
         url={imageUrl}
       />
     </div>
