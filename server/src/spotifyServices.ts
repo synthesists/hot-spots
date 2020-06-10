@@ -1,7 +1,5 @@
-import axios from 'axios';
 import rp from 'request-promise';
-
-const spotifyCredentials = {clientId:"edc4e977b3ed48deaf692be43db28175", clientSecret:"bb1ba85b88d44727ae94eaa6e4b4958e"};
+import spotifyCredentials from './config/config'
 
 let token: any;
 
@@ -9,19 +7,7 @@ const validToken = () => token && token.expiration > new Date().getTime();
 
 const updateToken = async () => {
     const buffer = Buffer.from(`${spotifyCredentials.clientId}:${spotifyCredentials.clientSecret}`, 'utf-8');
-    console.log(buffer.toString(), "herererere");
-    // const response: any = await axios({
-    //     method: 'post',
-    //     url: `https://accounts.spotify.com/api/token`,
-    //     data: {
-    //         grant_type: 'authorization_code', 
-    //     },
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded',
-    //         'Authorization': `Basic ${buffer.toString('base64')}`
-    //     },
-    // })
-    
+
     const options = {
         method: 'post',
         url: 'https://accounts.spotify.com/api/token',

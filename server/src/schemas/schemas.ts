@@ -27,11 +27,26 @@ type Image {
     width: Int
 }
 
+type TrackObj {
+    track: Track
+}
+
+type PlaylistTracks {
+    items: [TrackObj]
+}
+
+type Playlist {
+    description: String
+    id: String
+    name: String
+    tracks: PlaylistTracks
+}
+
 type Query {
-    tracks(id: String): [Track]
+    tracks(id: String): Track
     artists: Artist
     album: Album
-    recommendedTrack: Track
+    playlist(playlistID: String): Playlist
 }
 
 schema {
