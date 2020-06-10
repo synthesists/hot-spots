@@ -1,9 +1,11 @@
+import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
 import graphqlHttp from 'express-graphql';
 import cors from 'cors';
 import schema from './schemas/schemas';
 import resolver from './resolvers/resolvers';
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
