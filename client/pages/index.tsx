@@ -1,13 +1,38 @@
-import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import React from 'react';
+import MainLayout from '../layouts/main';
+import Question from '../containers/Question';
 
-export default () => (
-  <div>
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="favicon.ico" />
-    </Head>
-    <div className="container">Hello, from the client</div>
-  </div>
-);
+const getTracks = async (playlistId) => [
+  '65WFgyQwNpjmGQ41MiwGtF',
+  '136iZLQdKtlyEFurf4UKf6',
+  '3UJV7BZtyVy0ZNXiPOiaKB',
+];
+
+export default () => {
+  const router = useRouter();
+  const { playlistId } = router.query;
+
+  const [tracks, setTracks] = useState([]);
+  const [toPlay, setToPlay] = useState(false);
+
+  useEffect(() => {
+    getTracks(playlistId).then((t) => setTracks(t));
+  }, []);
+
+  const onClick = () => {
+    const [_, ...tail] = tracks;
+    setTracks(tail);
+  };
+
+  return (
+    <MainLayout title="Hot Spots | Play">
+      {toPlay ? (
+        <Question onClick={onClick} track={tracks[0]} />
+      ) : (
+        <button onClick={() => setToPlay(true)}>PLAY</button>
+      )}
+    </MainLayout>
+  );
+};

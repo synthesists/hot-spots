@@ -29,8 +29,8 @@ const updateToken = async () => {
 }
 
 const getTokenId = async () => {
-    if (!validToken()) await updateToken();
-    return token.id;
+  if (!validToken()) await updateToken();
+  return token.id;
 };
 
 export default getTokenId;
