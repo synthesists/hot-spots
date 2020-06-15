@@ -43,7 +43,7 @@ type Playlist {
 }
 
 type Query {
-    tracks(id: String): Track
+    tracks(id: String): [Track]
     artists: Artist
     album: Album
     playlist(playlistID: String): Playlist

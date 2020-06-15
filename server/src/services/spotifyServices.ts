@@ -47,14 +47,15 @@ const getPlaylistTracks = async ({ playlistID }: IPlaylistID) => {
         },
         json: true,
     };
-    const response = await axios(options);
-    return response
+    const response = await axios(options)
+    response.data.tracks.items = response.data.tracks.items.filter((playlistTrack: any) => playlistTrack.track.preview_url !== null)
+    return response.data
 }
 
 const getTrack = async ({ id }: ITrackID) => {
     const tokenId = await getTokenId();
     const options = {
-        url: `https://api.spotify.com/v1/track/${id}`,
+        url: `https://api.spotify.com/v1/tracks/${id}`,
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -62,17 +63,18 @@ const getTrack = async ({ id }: ITrackID) => {
         },
         json: true,
     };
-    const response = await axios(options);
-    return response;
+    const response = await axios(options);    
+    return response.data;
 };
 
-const getRecommendedTrack = async (id: String) => {
+const getRecommendedTrack = async (id: ITrackID) => {    
     const { tracks }:any = await getRecommendedTracks(id);
-    const [ track ] = tracks.slice(0,1)
+    const [ track ] = tracks.filter((track: any) => track.preview_url !== null)
+      .slice(0,1);   
     return track;
 };
 
-const getRecommendedTracks = async (id: String) => {    
+const getRecommendedTracks = async ({ id }: ITrackID) => {        
     const tokenId = await getTokenId();
     const options = {
     url:`https://api.spotify.com/v1/recommendations?market=US&seed_tracks=${id}&min_energy=0.4&min_popularity=10`,
@@ -83,10 +85,11 @@ const getRecommendedTracks = async (id: String) => {
     },
     json: true,
   };
+  
   return rp(options);
 }
 
-export default {
+export {
     getTokenId,
     getTrack,
     getRecommendedTrack,
